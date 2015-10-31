@@ -36,4 +36,24 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    /**
+     * [owns description]
+     * @param  [type] $relation [description]
+     * @return [type]           [description]
+     */
+    public function owns($relation)
+    {
+        return $relation->user_id == $this->id;
+    }
+
+    public function properties()
+    {
+        return $this->hasMany('App\Property');
+    }
+
+    public function publish(Property $property)
+    {
+        return $this->properties()->save($property);
+    }
 }

@@ -6,4 +6,4 @@ Homestead.json
 .phpintel
 /.phpintel
 
-/public/images/properties/photos
+/public/images/*

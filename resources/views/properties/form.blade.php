@@ -3,17 +3,17 @@
         {{ csrf_field() }}
         <div class="form-group">
             <label for="street">Street</label>
-            <input name="street" id="street" type="text" class="form-control" required>
+            <input name="street" id="street" type="text" class="form-control" required value=" {{ old('street') }}">
         </div>
 
         <div class="form-group">
             <label for="city">City</label>
-            <input name="city" id="city" type="text" class="form-control" required>
+            <input name="city" id="city" type="text" class="form-control" required value=" {{ old('city') }}">
         </div>
     
         <div class="form-group">
             <label for="zip">Zip/Postal Code</label>
-            <input name="zip" id="zip" type="text" class="form-control" required>
+            <input name="zip" id="zip" type="text" class="form-control" required value=" {{ old('zip') }}">
         </div>
 
         <div class="form-group">
@@ -32,19 +32,23 @@
 
         <div class="form-group">
             <label for="state">State</label>
-            <input name="state" id="state" type="text" class="form-control" required>
+            <input name="state" id="state" type="text" class="form-control" required value=" {{ old('state') }}">
         </div>
         
         <hr />
 
         <div class="form-group">
             <label for="price">Sale Price</label>
-            <input name="price" id="price" type="text" class="form-control" required>
+            <input name="price" id="price" type="text" class="form-control" required value=" {{ old('price') }}">
         </div>
 
         <div class="form-group">
             <label for="description">Property Description</label>
-            <textarea name="description" id="description" class="form-control" rows="10" required></textarea>
+            <textarea name="description" id="description" class="form-control" rows="10" required>{{ old('description') }}</textarea>
+        </div>
+
+        <div class="form-group">
+            {!! Recaptcha::render() !!}
         </div>
 
         <div class="form-group">

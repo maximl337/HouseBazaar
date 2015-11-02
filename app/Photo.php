@@ -31,10 +31,24 @@ class Photo extends Model
         return $this->belongsTo('App\Property');
     }
 
+    public function owner()
+    {
+        return $this->property()->first()->owner()->first();
+    }
 
     public function baseDir()
     {
         return 'images/properties/photos';
+    }
+
+    public function delete()
+    {
+        \File::delete([
+            $this->path,
+            $this->thumbnail_path
+            ]);
+
+        parent::delete();
     }
 
 

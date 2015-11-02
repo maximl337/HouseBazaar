@@ -37,10 +37,10 @@ class Property extends Model
         return $this->photos()->save($photo);
     }
 
-    public function getPriceAttribute($price)
-    {
-        return '$' . number_format($price);
-    }
+    // public function getPriceAttribute($price)
+    // {
+    //     return '$' . number_format($price);
+    // }
 
     /**
      * A property has many photos
@@ -54,7 +54,7 @@ class Property extends Model
 
     public function owner()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id', 'id');
     }
 
     public function ownedBy(User $user)

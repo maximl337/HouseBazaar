@@ -30,5 +30,6 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'property.owner' => \App\Http\Middleware\PropertyOwner::class,
+        'photo.owner'   => \App\Http\Middleware\PhotoOwner::class,
     ];
 }

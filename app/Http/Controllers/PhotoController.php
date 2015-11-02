@@ -12,6 +12,11 @@ use App\Http\Requests\AddPhotoRequest;
 
 class PhotoController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('photo.owner', ['only' => 'destroy']);
+    }
     /**
      * Add photos to property
      * 
@@ -26,5 +31,12 @@ class PhotoController extends Controller
 
         (new AddPhotoToProperty($property, $photo))->save();
 
+    }
+
+    public function destroy($id)
+    {
+        Photo::findOrFail($id)->delete();
+
+        return back();
     }
 }

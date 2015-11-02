@@ -56,4 +56,9 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->properties()->save($property);
     }
+
+    public function photos()
+    {
+        return $this->hasManyThrough('App\Photo', 'App\Property');
+    }
 }

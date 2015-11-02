@@ -25,12 +25,16 @@
                 
             </div>
 
+            @include('errors.errors')
+
             <div class="form-group">
                 <button class="form-control btn btn-primary" type="submit">Login</button>
             </div>
         </form>    
 
-        @include('errors.errors')
+        
+        <p class="text-center"><a href="/auth/register">Dont have an account? Click here to make one.</a></p>
+
     </div> <!-- EO .col -->
 </div> <!-- EO .row -->
 

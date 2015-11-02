@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "272de4b9ab001464bb180c2c06e67dd3",
+    "hash": "d7dcaa695043771143d6270547359483",
+    "content-hash": "998a778e5a17f5a1b4626d89ce3727a8",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -215,6 +216,58 @@
                 "string"
             ],
             "time": "2014-12-20 21:24:13"
+        },
+        {
+            "name": "greggilbert/recaptcha",
+            "version": "2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/greggilbert/recaptcha.git",
+                "reference": "121fd8ef288a311f288d36020c5a07baa312f53a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/greggilbert/recaptcha/zipball/121fd8ef288a311f288d36020c5a07baa312f53a",
+                "reference": "121fd8ef288a311f288d36020c5a07baa312f53a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.1",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/migrations"
+                ],
+                "psr-4": {
+                    "Greggilbert\\Recaptcha\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Gilbert",
+                    "email": "greg@greg-gilbert.com"
+                }
+            ],
+            "description": "reCAPTCHA Validator for Laravel 5",
+            "homepage": "http://github.com/greggilbert/recaptcha",
+            "keywords": [
+                "captcha",
+                "laravel",
+                "laravel5",
+                "recaptcha"
+            ],
+            "time": "2015-09-19 13:57:56"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -692,6 +745,63 @@
                 "storage"
             ],
             "time": "2015-09-22 19:18:28"
+        },
+        {
+            "name": "mews/captcha",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mewebstudio/captcha.git",
+                "reference": "e11676bb111cca46b1dac29c05316ab9fe9f3596"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mewebstudio/captcha/zipball/e11676bb111cca46b1dac29c05316ab9fe9f3596",
+                "reference": "e11676bb111cca46b1dac29c05316ab9fe9f3596",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "illuminate/config": "~5.0",
+                "illuminate/filesystem": "~5.0",
+                "illuminate/hashing": "~5.0",
+                "illuminate/support": "~5.0",
+                "intervention/image": "~2.2",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "Mews\\Captcha\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Muharrem ERİN",
+                    "email": "me@mewebstudio.com",
+                    "homepage": "https://github.com/mewebstudio",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel 5 Captcha Package",
+            "homepage": "https://github.com/mewebstudio/captcha",
+            "keywords": [
+                "captcha",
+                "laravel5 Captcha",
+                "laravel5 Security"
+            ],
+            "time": "2015-09-03 12:59:49"
         },
         {
             "name": "monolog/monolog",

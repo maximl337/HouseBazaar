@@ -26,13 +26,21 @@
                 Confirm Password
                 <input class="form-control" type="password" name="password_confirmation" required>
             </div>
+
+            <div class="form-group">
+                {!! Recaptcha::render() !!}
+            </div>
             
+            @include('errors.errors')
+
             <div class="form-group">
                 <button class="form-control btn btn-primary" type="submit">Register</button>
             </div>
         </form>
 
-        @include('errors.errors')
+        
+
+        <p class="text-center"><a href="/auth/register">Already have an account? click here to sign in.</a></p>
     </div>
 </div>
 

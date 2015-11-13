@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Log;
 use App\Photo;
 use App\Property;
 use App\Http\Requests;
@@ -11,15 +12,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PropertyRequest;
 use App\Http\Requests\UpdatePropertyRequest;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Forms\AddPhotoToProperty;
 
 class PropertyController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['show']]);
+        $this->middleware('auth', ['except' => ['show', 'index']]);
 
-        $this->middleware('property.owner', ['only' => 'addPhoto']);
+        $this->middleware('property.owner', ['only' => ['addPhoto', 'preview']]);
 
     }
     /**
@@ -27,9 +29,15 @@ class PropertyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $limit = $request->get('limit') ?: 9;
+
+        $page = $request->get('page') ?: 0;
+
+        $properties = Property::paginate($limit);
+
+        return view('pages.home', compact('properties'));
     }
 
     /**
@@ -52,13 +60,51 @@ class PropertyController extends Controller
     public function store(PropertyRequest $request)
     {
 
+        $input = $request->input();
+
+        $exists = Property::where([
+                'street'    => $input['street'],
+                'zip'       =>  $input['zip'],
+                'state'     =>  $input['state']
+            ])->exists();
+
+        if($exists) {
+
+            flash()->overlay("Error", "A property with the street, zip, state already exists!", 'error');
+
+            return back();
+        }
+
+        $photos = $request->file('photos');
+
+        if(count($photos) > 10) {
+
+            flash()->overlay("Error", "Maximum number of photos allowed is 10");
+
+            return back();
+        }
+
+        $input['street'] = trim($input['street']);
+
+        $input['zip'] = trim($input['zip']);
+        
+        $input['state'] = trim($input['state']);
+
         $property = Auth::user()->publish(
-            new Property($request->all())
+            new Property($input)
         );
+
+        foreach($photos as $photo) {
+
+            (new AddPhotoToProperty($property, $photo))->saveToImgur();
+
+            Log::info("Photo instance:" . get_class($photo));
+
+        }
 
         flash()->overlay("Success", "Property Added!");
 
-        return redirect($property->path()); // redirect
+        return redirect('/preview/'.$property->id); // redirect($property->path()) 
     }
 
     /**
@@ -67,12 +113,12 @@ class PropertyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($zip, $street)
+    public function show($country, $zip, $street)
     {
 
         try {
 
-            $property =  Property::locatedAt($zip, $street);
+            $property =  Property::locatedAt($country, $zip, $street);
 
             foreach($property->photos as $photo) {
 
@@ -98,6 +144,22 @@ class PropertyController extends Controller
         
     }
 
+    public function preview($id)
+    {
+        try {
+
+            $property = Property::findOrFail($id);
+
+            return view('properties.preview', compact('property'));
+        
+        } catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+
+            flash()->overlay("Error", "Property not found", 'error');
+
+            return back();
+
+        }
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -110,6 +172,11 @@ class PropertyController extends Controller
         try {
 
             $property = Property::findOrFail($id);    
+
+            foreach($property->photos as $photo) {
+
+                $photo->size = getjpegsize($photo->path);
+            }
 
             return view('properties.edit', compact('property'));
 
@@ -145,7 +212,7 @@ class PropertyController extends Controller
 
             flash()->overlay("Success", "Property updated successfully", "success");
 
-            return redirect($property->path());
+            return $property->published ? redirect($property->path()) : redirect('/preview/' . $property->id);
 
         } catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
 
@@ -158,6 +225,35 @@ class PropertyController extends Controller
             flash()->overlay("Error", $e->getMessage(), 'error');
 
             return back();
+        }
+    }
+
+    public function publish($id)
+    {
+        try {
+
+            $property = Property::findOrFail($id);
+
+            $property->published = true;
+
+            $property->save();
+
+            flash()->overlay("Success", "Property published!");
+
+            return redirect($property->path());
+
+        } catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+
+            flash()->overlay("Error", "Property not found", "error");
+
+            return back();
+
+        } catch(\Exception $e) {
+
+            flash()->overlay("Error", $e->getMessage(), "error");
+
+            return back();
+
         }
     }
 

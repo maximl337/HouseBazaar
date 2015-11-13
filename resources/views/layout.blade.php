@@ -27,7 +27,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="/">HOME</a></li>
-            <li class="text-primary"><a href="properties/create">ADD PROPERTY</a></li>
+            <li class="text-primary"><a href="/properties/create">ADD PROPERTY</a></li>
           </ul>
 
           @if(Auth::check())

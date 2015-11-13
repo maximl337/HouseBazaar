@@ -2,7 +2,9 @@
 
 namespace App;
 
+use Log;
 use Image;
+use Imgur;
 use Illuminate\Database\Eloquent\Model;
 
 class Photo extends Model
@@ -38,17 +40,43 @@ class Photo extends Model
 
     public function baseDir()
     {
-        return 'images/properties/photos';
+        return '/images/properties';
     }
 
     public function delete()
     {
         \File::delete([
-            $this->path,
-            $this->thumbnail_path
+                $this->path,
+                $this->thumbnail_path
             ]);
 
         parent::delete();
+    }
+
+    public static function uploadToImgur($image_path)
+    {
+
+        $imageData = array(
+            'image' => $image_path,
+            'type'  => 'file'
+        );
+
+        try {
+
+            $basic = Imgur::api('image')->upload($imageData);
+
+            Log::info("imgur", [serialize($basic)]);
+
+            //parse response
+            $resp = $basic->getData();
+
+            return $resp['link'];
+
+        } catch(\Exception $e) {
+
+            throw $e;
+        }
+        
     }
 
 

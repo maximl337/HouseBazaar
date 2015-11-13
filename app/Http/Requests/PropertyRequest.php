@@ -24,14 +24,20 @@ class PropertyRequest extends Request
     public function rules()
     {
         return [
-            'street'        => 'required|max:256',
-            'city'          => 'required|max:256',
-            'zip'           => 'required|max:256',
-            'state'         => 'required|max:256',
-            'country'       => 'required|max:256',
-            'price'         => 'required|max:50',
-            'teaser'        => 'max:140',
+            'street'        => 'required|max:255|alpha_num',
+            'city'          => 'required|max:255',
+            'zip'           => 'required|max:255|alpha_num',
+            'state'         => 'required|max:255',
+            'country'       => 'required|max:2',
+            'price'         => 'max:50',
             'description'   => 'required|max:400',
+            'bedrooms'      => 'required',
+            'bathrooms'     => 'required',
+            'size_square_feet'  => 'integer',
+            'contact_email'     => 'email',
+            'transaction_type'  => 'required',
+            'seller_type'       => 'required',
+            'property_type'     => 'required',
             'g-recaptcha-response' => 'required|recaptcha'
         ];
     }

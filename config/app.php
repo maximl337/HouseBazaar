@@ -139,6 +139,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
+        Redeman\Imgur\ImgurServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -147,6 +148,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
 
     ],
 
@@ -199,6 +201,7 @@ return [
         'Image'     => Intervention\Image\Facades\Image::class,
         'Captcha'   => Mews\Captcha\Facades\Captcha::class,
         'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,
+        'Imgur'     => Redeman\Imgur\Facades\Imgur::class,
 
     ],
 

@@ -27,9 +27,26 @@ class PhotoController extends Controller
     {
         $property = Property::find($id);
 
+        if($property->photos()->count() === 10) {
+
+            return response()->json([
+                    "Property cannot have more than 10 photos"
+                ], 403);
+            
+        }
+
         $photo = $request->file('photo');
 
-        (new AddPhotoToProperty($property, $photo))->save();
+        try {
+
+            (new AddPhotoToProperty($property, $photo))->saveToImgur();
+
+        } catch(\Exception $e) {
+
+            return $e->getMessage();
+        }
+
+        
 
     }
 

@@ -14,21 +14,41 @@ class Property extends Model
         'country',
         'price',
         'description',
-        'user_id' 
+        'user_id',
+        'bedrooms',
+        'bathrooms',
+        'size_square_feet',
+        'youtube_url',
+        'contact_phone_1',
+        'contact_phone_2',
+        'contact_email',
+        'allow_comments',
+        'transaction_type',
+        'seller_type',
+        'property_type',
+        'furnished',
+        'pets',
+        'sample' 
     ];
 
     /**
-     * [scopeLocatedAt description]
-     * @param  [type] $query  [description]
+     * 
+     * @param  [type] $country  [description]
      * @param  [type] $zip    [description]
      * @param  [type] $street [description]
      * @return [type]         [description]
      */
-    public static function locatedAt($zip, $street)
+    public static function locatedAt($country, $zip, $street)
     {
+        $country = strtolower($country);
+
         $street = str_replace('-', ' ', $street);
 
-        return static::where(compact('zip', 'street'))->firstOrFail();
+        $zip = str_replace('', ' ', $zip);
+
+        $published = true;
+
+        return static::where(compact('country', 'zip', 'street', 'published'))->firstOrFail();
 
     }
 
@@ -64,6 +84,11 @@ class Property extends Model
 
     public function path()
     {
-        return $this->zip . '/' . str_replace(' ', '-', $this->street);
+        return '/' . $this->country . '/' . str_replace(' ', '', $this->zip) . '/' . str_replace(' ', '-', $this->street);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag', 'property_tags')->withTimestamps();
     }
 }

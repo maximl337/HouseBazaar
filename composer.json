@@ -9,7 +9,8 @@
         "laravel/framework": "5.1.*",
         "intervention/image": "^2.3",
         "mews/captcha": "^2.1",
-        "greggilbert/recaptcha": "^2.0"
+        "greggilbert/recaptcha": "^2.0",
+        "redeman/imgur-laravel": "^0.0.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

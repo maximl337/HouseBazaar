@@ -32,8 +32,45 @@
 
             <hr />
 
-            
-                <div class="description">{!! nl2br($property->description) !!}</div>        
+            <div class="details">
+
+                <div class="description">{!! nl2br($property->description) !!}</div>
+                
+                <table class="table table-bordered">
+                    <tr>
+                        <td>Bedrooms</td>
+                        <td>{{ $property->bedrooms == 0 ? "Bachelor/Studio" : $property->bedrooms }}</td>
+                    </tr>
+                    <tr>
+                        <td>Bathrooms</td>
+                        <td>{{ $property->bathrooms }}</td>
+                    </tr>
+                    <tr>
+                        <td>Size (sqft)</td>
+                        <td>{{ $property->size_square_feet ?: "-" }}</td>
+                    </tr>
+                    <tr>
+                        <td>Furnished</td>
+                        <td>{{ $property->furnished ? "Yes" : "No" }}</td>
+                    </tr>
+                    <tr>
+                        <td>Pets allowed</td>
+                        <td>{{ $property->pets ? "Yes" : "No" }}</td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td>{{ ucfirst($property->property_type) }}</td>
+                    </tr>
+                    <tr>
+                        <td>For</td>
+                        <td>{{ $property->transaction_type }}</td>
+                    </tr>
+                    <tr>
+                        <td>Seller type</td>
+                        <td>{{ ucfirst($property->seller_type) }}</td>
+                    </tr>
+                </table>
+            </div>  
             
             <hr />
         </div> <!-- .col -->

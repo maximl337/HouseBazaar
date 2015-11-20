@@ -52,9 +52,39 @@ class Property extends Model
 
     }
 
+    public function scopePrice($query, $order)
+    {
+        return $query->whereNotIn('price', [0])->orderBy('price', $order);
+    }
+
+    public function scopeBedroom($query, $order)
+    {
+        return $query->orderBy('bedrooms', $order);
+    }
+
+    public function scopeBathroom($query, $order)
+    {
+        return $query->orderBy('bathrooms', $order);
+    }
+
+    public function scopeSize($query, $order)
+    {
+        return $query->whereNotIn('size_square_feet', [0])->orderBy('size_square_feet', $order);
+    }
+
     public function addPhoto(Photo $photo)
     {
         return $this->photos()->save($photo);
+    }
+
+    public function scopeCountry($query, $country)
+    {
+        return $query->where('country', $country);
+    }
+
+    public function scopePublished($query)
+    {
+        return $query->where('published', true);
     }
 
     // public function getPriceAttribute($price)

@@ -3,6 +3,8 @@
 
 Route::get('/', 'PropertyController@index');
 
+Route::get('/browse', 'PropertyController@browse');
+
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 
 Route::post('auth/login', 'Auth\AuthController@postLogin');
@@ -23,7 +25,11 @@ Route::post('properties/{id}/publish', 'PropertyController@publish');
 
 Route::post('properties/{id}', 'PropertyController@update');
 
+Route::get('user/properties', 'PropertyController@myProperties');
+
 Route::resource('properties', 'PropertyController');
+
+Route::post('message', 'MessageController@store');
 
 Route::get('{country}/{zip}/{street}', 'PropertyController@show');
 

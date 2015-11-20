@@ -7,6 +7,8 @@
     <link rel="stylesheet" type="text/css" href="/css/libs.css">
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/dropzone.css">
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    @yield('header')
 </head>
 <body>
 
@@ -37,7 +39,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, {{ Auth::user()->name }} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="#">Account Settings</a></li>
-                  <li><a href="#">My Properties</a></li>
+                  <li><a href="/user/properties">My Properties</a></li>
                   <li role="separator" class="divider"></li>
                   <li><a href="/auth/logout">Logout</a></li>
                 </ul>

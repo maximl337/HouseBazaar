@@ -19,7 +19,7 @@ class PropertyController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['show', 'index']]);
+        $this->middleware('auth', ['except' => ['show', 'index', 'browse']]);
 
         $this->middleware('property.owner', ['only' => ['addPhoto', 'preview']]);
 
@@ -35,9 +35,100 @@ class PropertyController extends Controller
 
         $page = $request->get('page') ?: 0;
 
-        $properties = Property::paginate($limit);
+        $sort = $request->get('sort') ?: 'date';
+
+        $order = $request->get('order') ?: 'desc';
+
+        $country = $request->get('country') ?: 'ca';
+
+        if($sort == 'price') {
+
+            $properties = Property::country($country)->published()->price($order)->paginate($limit);
+        
+        }
+        elseif($sort == 'bathroom') {
+
+            $properties = Property::country($country)->published()->bathroom($order)->paginate($limit);
+        }
+        elseif($sort == 'bedroom') {
+
+            $properties = Property::country($country)->published()->bedroom($order)->paginate($limit);
+        }
+        elseif($sort == 'size') {
+
+            $properties = Property::country($country)->published()->size($order)->paginate($limit);
+        }
+        else {
+
+            $properties = Property::country($country)->published()->orderBy('created_at', 'desc')->paginate($limit);
+
+        }
+
+        if(!$properties->count()) {
+
+            flash()->overlay("Error", "Could not find any properties", 'error');
+
+            return back();
+        }
 
         return view('pages.home', compact('properties'));
+    }
+
+
+    public function browse(Request $request)
+    {
+        $limit = $request->get('limit') ?: 12;
+
+        $page = $request->get('page') ?: 0;
+
+        $sort = $request->get('sort') ?: 'date';
+
+        $order = $request->get('order') ?: 'desc';
+
+        $country = $request->get('country') ?: 'ca';
+
+        if($sort == 'price') {
+
+            $properties = Property::country($country)->published()->price($order)->paginate($limit);
+        
+        }
+        elseif($sort == 'bathroom') {
+
+            $properties = Property::country($country)->published()->bathroom($order)->paginate($limit);
+        }
+        elseif($sort == 'bedroom') {
+
+            $properties = Property::country($country)->published()->bedroom($order)->paginate($limit);
+        }
+        elseif($sort == 'size') {
+
+            $properties = Property::country($country)->published()->size($order)->paginate($limit);
+        }
+        else {
+
+            $properties = Property::country($country)->published()->orderBy('created_at', 'desc')->paginate($limit);
+
+        }
+
+        if(!$properties->count()) {
+
+            flash()->overlay("Error", "Could not find any properties", 'error');
+
+            return back();
+        }
+
+        return view('properties.browse', compact('properties'));
+    }
+
+    public function myProperties(Request $request)
+    {
+        $limit = $request->get('limit') ?: 12;
+
+        $page = $request->get('page') ?: 0;
+
+        $properties = Auth::user()->properties()->paginate($limit);
+
+        return view('properties.my-properties', compact('properties'));
     }
 
     /**
@@ -96,9 +187,9 @@ class PropertyController extends Controller
 
         foreach($photos as $photo) {
 
-            (new AddPhotoToProperty($property, $photo))->saveToImgur();
-
-            Log::info("Photo instance:" . get_class($photo));
+            if(!is_null($photo)) {
+                (new AddPhotoToProperty($property, $photo))->saveToImgur();
+            }
 
         }
 
@@ -206,9 +297,24 @@ class PropertyController extends Controller
     {
         try {
 
+            $input = $request->input();
+
+            $exists = Property::where([
+                'street'    => $input['street'],
+                'zip'       =>  $input['zip'],
+                'state'     =>  $input['state']
+            ])->exists();
+
+            if($exists) {
+
+                flash()->overlay("Error", "A property with the street, zip, state already exists!", 'error');
+
+                return back();
+            }
+
             $property = Property::findOrFail($id);
 
-            $property->update($request->input());
+            $property->update($input);
 
             flash()->overlay("Success", "Property updated successfully", "success");
 
@@ -233,6 +339,13 @@ class PropertyController extends Controller
         try {
 
             $property = Property::findOrFail($id);
+
+            if($property->photos()->count() === 0) {
+
+                flash()->overlay("Error", "Please add atleast one photo to publish property", "error");
+
+                return back();
+            }
 
             $property->published = true;
 

@@ -1,3 +1,5 @@
+@inject('countries', 'App\Http\Utilities\Country')
+
 @extends('layout')
 
 @section('content')
@@ -50,6 +52,28 @@
     </div>
 
     <div class="row">
+        <div class="col-md-12">
+            
+                <div class="btn-group pull-right">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Country <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+
+                        @foreach($countries::all() as $country => $code)
+                            <li><a href="?country={{ $code }}">{{ $country }}</a></li>
+                        @endforeach
+                        
+                    </ul>
+                </div>
+
+                @include('properties.sort')
+            
+
+        </div> <!-- .col -->
+    </div> <!-- .row -->
+
+    <div class="row">
     	<div class="col-md-12">
     		
     		@foreach($properties->chunk(3) as $propertyRow)
@@ -84,7 +108,7 @@
 
         <div class="col-md-10 col-md-offset-1 text-center">
                 
-                {!! $properties->render() !!}
+                <a class="btn btn-primary" href="/browse">Show more</a>
 
         </div>
     

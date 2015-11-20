@@ -33,7 +33,7 @@ class PropertyOwner
 
             } else {
 
-                flash('Unauthorized access');
+                flash()->overlay("Error", "Unauthorized access", 'error');
 
                 return redirect()->back();
 

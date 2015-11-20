@@ -140,6 +140,7 @@ return [
         Mews\Captcha\CaptchaServiceProvider::class,
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
         Redeman\Imgur\ImgurServiceProvider::class,
+        App\Providers\MandrillServiceProvider::class,
 
         /*
          * Application Service Providers...

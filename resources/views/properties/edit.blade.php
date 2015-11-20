@@ -66,7 +66,7 @@
 
         <div class="form-group">
             <label for="price">Sale Price</label>
-            <input name="price" id="price" type="text" class="form-control" required value="{{ $property->price }}">
+            <input name="price" id="price" type="text" class="form-control" value="{{ $property->price }}">
         </div>
 
         <div class="form-group">

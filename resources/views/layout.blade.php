@@ -38,7 +38,7 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, {{ Auth::user()->name }} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Account Settings</a></li>
+                  <li><a href="/account/settings">Account Settings</a></li>
                   <li><a href="/user/properties">My Properties</a></li>
                   <li role="separator" class="divider"></li>
                   <li><a href="/auth/logout">Logout</a></li>
@@ -46,6 +46,11 @@
               </li>
             </ul>
 
+          @else
+            <ul class="nav navbar-nav navbar-right">
+              
+              <li><a class="" href="/auth/login">SIGN IN</a></li>
+            </ul>
           @endif
           
         </div><!--/.nav-collapse -->

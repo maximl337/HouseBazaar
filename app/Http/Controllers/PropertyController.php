@@ -64,12 +64,12 @@ class PropertyController extends Controller
 
         }
 
-        if(!$properties->count()) {
+        // if(!$properties->count()) {
 
-            flash()->overlay("Error", "Could not find any properties", 'error');
+        //     flash()->overlay("Error", "Could not find any properties", 'error');
 
-            return back();
-        }
+        //     return back();
+        // }
 
         return view('pages.home', compact('properties'));
     }

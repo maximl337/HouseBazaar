@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 
+use Mail;
 use App\Message;
 use App\Http\Requests;
-//use App\Contracts\Mail;
-use Mail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MessageRequest;
@@ -26,14 +25,12 @@ class MessageController extends Controller
 
         $user = $message->user()->first();
 
-        Mail::send('emails.reminder', compact('user'), function ($m) use ($user) {
+        Mail::send('emails.message', compact('user', 'message'), function ($m) use ($user, $message) {
 
-                $m->from('test@housemenow.com', 'System');
+                $m->from('notifications@housemenow.com', 'system');
 
-                $m->to($user->email, $user->name)->subject('Test');
+                $m->to($user->email, $user->name)->subject('You have a new message');
             });
-
-        //$this->mailer->recipient($user)->send();
         
         flash()->overlay("Success", "Your message was emailed to the poster", 'success');
 

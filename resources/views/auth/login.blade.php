@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-6 col-md-offset-3">
         
         <form method="POST" action="/auth/login" class="form">
             {!! csrf_field() !!}
@@ -34,6 +34,7 @@
 
         
         <p class="text-center"><a href="/auth/register">Dont have an account? Click here to make one.</a></p>
+        <p class="text-center"><a href="/auth/register">Forget your password?</a></p>
 
     </div> <!-- EO .col -->
 </div> <!-- EO .row -->

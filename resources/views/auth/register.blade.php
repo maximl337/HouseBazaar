@@ -3,7 +3,7 @@
 @section('content')
     
 <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-6 col-md-offset-3">
         <form method="POST" action="/auth/register">
             {!! csrf_field() !!}
             
@@ -41,6 +41,8 @@
         
 
         <p class="text-center"><a href="/auth/register">Already have an account? click here to sign in.</a></p>
+        
+        <p class="text-center"><a href="/auth/register">Forget your password?</a></p>
     </div>
 </div>
 

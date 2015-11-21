@@ -2,6 +2,8 @@
 
 @section('content')
 
+<div class="container">
+
     <div class="row">
         <div class="col-md-6">
             <h3>Preview</h3>
@@ -9,14 +11,13 @@
         <div class="col-md-6">
             
                 
-                <a href="{{ action('PropertyController@edit', ['id' => $property->id]) }}" class="btn btn-default pull-right">Make changes</a>
-
+                <a href="{{ action('PropertyController@edit', ['id' => $property->id]) }}" class="btn btn-primary pull-right">Make changes</a>
                 <form class="pull-right" method="POST" action="{{ action('PropertyController@publish', ['id' => $property->id]) }}" role="form">
 
                     <input type="hidden" name="_method" value="post">
 
                     {!! csrf_field() !!}
-                    <button type="submit" class="btn btn-default">Publish</button>
+                    <button type="submit" class="btn btn-primary">Publish</button>
                 </form>
                 
                 
@@ -110,7 +111,7 @@
 
     </div> <!-- .row -->
 
-  
+</div> <!-- .container -->
 
 @stop
 

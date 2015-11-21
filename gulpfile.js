@@ -12,7 +12,9 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss')
+    mix.sass([
+    		'app.scss'
+    		], './public/css/app.css')
         .scripts([
                 'libs/sweetalert-dev.js',
                 'libs/magnific-popup.js'

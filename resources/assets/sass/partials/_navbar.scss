@@ -1,0 +1,15 @@
+#navbar {
+	
+	background: #ffffff;
+}
+
+#navbar a {
+	
+	color: $primary-color;
+}
+
+#navbar a:hover {
+	
+	color: darken($primary-color, 10%);
+}
+

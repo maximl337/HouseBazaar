@@ -303,7 +303,7 @@ class PropertyController extends Controller
                 'street'    => $input['street'],
                 'zip'       =>  $input['zip'],
                 'state'     =>  $input['state']
-            ])->exists();
+            ])->whereNotIn('id', [$id])->exists();
 
             if($exists) {
 

@@ -5756,7 +5756,26 @@ button.close {
 .form-control {
   height: 39px; }
 
+#navbar {
+  background: #ffffff; }
+
+#navbar a {
+  color: #34495e; }
+
+#navbar a:hover {
+  color: #222f3d; }
+
+.btn-primary {
+  background-color: #34495e !important; }
+
+.btn {
+  border-radius: 3px !important; }
+
+html {
+  min-height: 100%; }
+
 body {
+  font: Lato, sans-serif !important;
   padding-top: 70px; }
 
 img {

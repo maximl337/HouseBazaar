@@ -1,9 +1,22 @@
+
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+@import "partials/main";
 
 @import "partials/forms";
 
+@import "partials/custom";
+
+@import "partials/navbar";
+
+@import "partials/buttons";
+
+html {
+	
+	min-height: 100%;
+}
 body {
-    
+    font: $font-stack !important;
     padding-top: 70px;
 }
 

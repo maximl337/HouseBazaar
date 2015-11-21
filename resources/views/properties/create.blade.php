@@ -2,11 +2,15 @@
 
 @section('content')
 
-    <h1>Selling a property?</h1>
+<div class="container">
 
     <div class="row">
         
         <div class="col-md-10 col-md-offset-1">
+
+            <h1 class="page-title">Selling a property?</h1>
+
+            <hr />
           
             <form method="post" action="/properties" enctype="multipart/form-data">
 
@@ -31,7 +35,7 @@
 
     </div> <!-- EO .row -->
     
-
+</div> <!-- .container -->
 @stop
 
 @section('scripts.footer')

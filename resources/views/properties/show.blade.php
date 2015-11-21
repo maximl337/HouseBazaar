@@ -10,154 +10,158 @@
 
 @section('content')
 
-    <div class="row property">
+    <div class="container">
 
-        <div class="col-md-12">
-            @include('errors.errors')
-        </div>
+        <div class="row property">
 
-        <div class="col-md-4">
-
-            <h1>{{ $property->street }}</h1>
-            <h2>{!! $property->price ? "$" . number_format($property->price) : "Contact for price" !!}</h2>
-
-            <hr />
-
-            <div class="social">
-                   <a href="http://www.facebook.com/sharer.php?u={{ urlencode(url() . $property->path()) }}&t=house-me-now" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Share on facebook</a><br />
-
-                   <a href="http://twitter.com/home?status=house-me-now+{{ urlencode(url() . $property->path()) }}" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Share on Twitter</a><br />
-
-                   <a href="https://plus.google.com/share" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Share on Google+</a><br />
-
+            <div class="col-md-12">
+                @include('errors.errors')
             </div>
 
-            <div class="contact">
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                    <i class="fa fa-envelope"></i> Email poster
-                </button>
+            <div class="col-md-4">
 
-                <div class="collapse" id="collapseExample">
-                    <div class="well">
+                <h1>{{ $property->street }}</h1>
+                <h2>{!! $property->price ? "$" . number_format($property->price) : "Contact for price" !!}</h2>
 
-                        <form id="contact" method="post" action="/message" role="form">
+                <hr />
 
-                            {!! csrf_field() !!}
+                <div class="social">
+                       <a href="http://www.facebook.com/sharer.php?u={{ urlencode(url() . $property->path()) }}&t=house-me-now" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Share on facebook</a><br />
 
-                            <input type="hidden" name="_method" value="POST" />
+                       <a href="http://twitter.com/home?status=house-me-now+{{ urlencode(url() . $property->path()) }}" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Share on Twitter</a><br />
 
-                            <input type="hidden" name="user_id" value="{{ $property->user_id }}">
+                       <a href="https://plus.google.com/share" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Share on Google+</a><br />
 
-                            <div class="form-group">
-                                <label for="name">Name *</label>
-                                <input id="name" class="form-control" type="text" name="name" value="{{ old('name') }}" placeholder="Enter your name" required />
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email">Email *</label>
-                                <input id="email" class="form-control" type="email" name="email" value="{{ old('email') }}" placeholder="Enter your email" required />
-                            </div>
-
-                            <div class="form-group">
-                                <label for="phone">Phone</label>
-                                <input id="phone" class="form-control" type="text" name="phone" value="{{ old('phone') }}" placeholder="Enter your phone number" required />
-                            </div>
-
-                            <div class="form-group">
-                                <label for="body">Message *</label>
-                                <textarea style="resize: none;" id="body" class="form-control" name="body" rows="4" placeholder="Enter a message" required>{{ old('body') }}</textarea>
-                            </div>
-
-                            <div class="form-group">
-                                {!! Recaptcha::render() !!}
-                            </div>
-
-                            <div class="form-group">
-                                <input class="form-control btn btn-primary" type="submit" value="Send" />
-                            </div>
-                        </form>
-                    
-                    </div>
                 </div>
-                
-            </div>
 
-            <div class="details">
+                <div class="contact">
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <i class="fa fa-envelope"></i> Email poster
+                    </button>
 
-                <div class="description">{!! nl2br($property->description) !!}</div>
-                
-                <table class="table table-bordered">
-                    <tr>
-                        <td>Bedrooms</td>
-                        <td>{{ $property->bedrooms == 0 ? "Bachelor/Studio" : $property->bedrooms }}</td>
-                    </tr>
-                    <tr>
-                        <td>Bathrooms</td>
-                        <td>{{ $property->bathrooms }}</td>
-                    </tr>
-                    <tr>
-                        <td>Size (sqft)</td>
-                        <td>{{ $property->size_square_feet ?: "-" }}</td>
-                    </tr>
-                    <tr>
-                        <td>Furnished</td>
-                        <td>{{ $property->furnished ? "Yes" : "No" }}</td>
-                    </tr>
-                    <tr>
-                        <td>Pets allowed</td>
-                        <td>{{ $property->pets ? "Yes" : "No" }}</td>
-                    </tr>
-                    <tr>
-                        <td>Type</td>
-                        <td>{{ ucfirst($property->property_type) }}</td>
-                    </tr>
-                    <tr>
-                        <td>For</td>
-                        <td>{{ $property->transaction_type }}</td>
-                    </tr>
-                    <tr>
-                        <td>Seller type</td>
-                        <td>{{ ucfirst($property->seller_type) }}</td>
-                    </tr>
-                </table>
-            </div>  
-        
-            <hr />
+                    <div class="collapse" id="collapseExample">
+                        <div class="well">
 
-            @if(Auth::user() && Auth::user()->owns($property))
-                
-                <a href="/properties/{{ $property->id }}/edit" class="btn btn-primary pull-left">Edit property</a>
+                            <form id="contact" method="post" action="/message" role="form">
 
-                {!! link_to('Delete', $property, 'DELETE', 'btn btn-danger', 'Delete property?') !!}
+                                {!! csrf_field() !!}
 
-            @endif
-        </div> <!-- .col -->
+                                <input type="hidden" name="_method" value="POST" />
 
-        <div class="col-md-8 popup-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+                                <input type="hidden" name="user_id" value="{{ $property->user_id }}">
 
+                                <div class="form-group">
+                                    <label for="name">Name *</label>
+                                    <input id="name" class="form-control" type="text" name="name" value="{{ old('name') }}" placeholder="Enter your name" required />
+                                </div>
 
-            @foreach ($property->photos->chunk(4) as $set)
-                
-                <div class="row">
-                    @foreach ($set as $photo )
-                        <div class="col-md-3 col-sm-4 col-xs-6 gallery-image">
+                                <div class="form-group">
+                                    <label for="email">Email *</label>
+                                    <input id="email" class="form-control" type="email" name="email" value="{{ old('email') }}" placeholder="Enter your email" required />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <input id="phone" class="form-control" type="text" name="phone" value="{{ old('phone') }}" placeholder="Enter your phone number" required />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="body">Message *</label>
+                                    <textarea style="resize: none;" id="body" class="form-control" name="body" rows="4" placeholder="Enter a message" required>{{ old('body') }}</textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    {!! Recaptcha::render() !!}
+                                </div>
+
+                                <div class="form-group">
+                                    <input class="form-control btn btn-primary" type="submit" value="Send" />
+                                </div>
+                            </form>
                         
+                        </div>
+                    </div>
+                    
+                </div>
 
-                            <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                                <a href="{{ $photo->path }}" itemprop="contentUrl" data-size="{{ $photo->size['width'] . 'x' . $photo->size['height'] }}">
-                                    <img src="{{ $photo->thumbnail_path }}" itemprop="thumbnail" alt="{{ $property->street }}" style="max-width: 200px;" />
-                                </a>
-                            </figure>
+                <div class="details">
 
+                    <div class="description">{!! nl2br($property->description) !!}</div>
+                    
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>Bedrooms</td>
+                            <td>{{ $property->bedrooms == 0 ? "Bachelor/Studio" : $property->bedrooms }}</td>
+                        </tr>
+                        <tr>
+                            <td>Bathrooms</td>
+                            <td>{{ $property->bathrooms }}</td>
+                        </tr>
+                        <tr>
+                            <td>Size (sqft)</td>
+                            <td>{{ $property->size_square_feet ?: "-" }}</td>
+                        </tr>
+                        <tr>
+                            <td>Furnished</td>
+                            <td>{{ $property->furnished ? "Yes" : "No" }}</td>
+                        </tr>
+                        <tr>
+                            <td>Pets allowed</td>
+                            <td>{{ $property->pets ? "Yes" : "No" }}</td>
+                        </tr>
+                        <tr>
+                            <td>Type</td>
+                            <td>{{ ucfirst($property->property_type) }}</td>
+                        </tr>
+                        <tr>
+                            <td>For</td>
+                            <td>{{ $property->transaction_type }}</td>
+                        </tr>
+                        <tr>
+                            <td>Seller type</td>
+                            <td>{{ ucfirst($property->seller_type) }}</td>
+                        </tr>
+                    </table>
+                </div>  
+            
+                <hr />
+
+                @if(Auth::user() && Auth::user()->owns($property))
+                    
+                    <a href="/properties/{{ $property->id }}/edit" class="btn btn-primary pull-left">Edit property</a>
+
+                    {!! link_to('Delete', $property, 'DELETE', 'btn btn-danger', 'Delete property?') !!}
+
+                @endif
+            </div> <!-- .col -->
+
+            <div class="col-md-8 popup-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+
+
+                @foreach ($property->photos->chunk(4) as $set)
+                    
+                    <div class="row">
+                        @foreach ($set as $photo )
+                            <div class="col-md-3 col-sm-4 col-xs-6 gallery-image">
                             
-                        </div> <!-- .col-md-3 -->
-                    @endforeach        
-                </div> <!-- .row -->
-            @endforeach
 
-        </div> <!-- .col -->
+                                <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                                    <a href="{{ $photo->path }}" itemprop="contentUrl" data-size="{{ $photo->size['width'] . 'x' . $photo->size['height'] }}">
+                                        <img src="{{ $photo->thumbnail_path }}" itemprop="thumbnail" alt="{{ $property->street }}" style="max-width: 200px;" />
+                                    </a>
+                                </figure>
 
-    </div> <!-- .row -->
+                                
+                            </div> <!-- .col-md-3 -->
+                        @endforeach        
+                    </div> <!-- .row -->
+                @endforeach
+
+            </div> <!-- .col -->
+
+        </div> <!-- .row -->
+
+    </div> <!-- .container -->
 
   
 

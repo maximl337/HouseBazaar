@@ -65,11 +65,11 @@ class AddPhotoToProperty
         $fileName = $this->makeFileName();
 
         //move file
-        $this->file->move('/images/properties', $fileName);
+        $this->file->move('./images/properties', $fileName);
 
-        $original_path = '/images/properties/' . $fileName;
+        $original_path = './images/properties/' . $fileName;
 
-        $original_thumbnail_path = '/images/properties/tn-' . $fileName;
+        $original_thumbnail_path = './images/properties/tn-' . $fileName;
 
         $this->thumbnail->make($original_path, $original_thumbnail_path);
 

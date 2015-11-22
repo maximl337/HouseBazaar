@@ -172,7 +172,7 @@
                                 <br />
 
                                 <table class="table table-bordered visible-sm visible-xs">
-                                <tbody itemprop="description">
+                                <tbody>
                                     <tr>
                                         <td>Bedrooms</td>
                                         <td>{{ $property->bedrooms == 0 ? "Bachelor/Studio" : $property->bedrooms }}</td>

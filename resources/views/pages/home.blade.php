@@ -6,6 +6,7 @@
     <title> House me now | Buy and sell properties with beautiful property pages</title>
     <meta name="decription" content="House me now is an online portal to Buy and sell properties quickly with beautiful property pages." />
     <meta name="keywords" content="buy sell property, rent, house, home, rental, bedrooms, bathrooms">
+    <link rel="canonical" href="http://housemenow-staging.herokuapp.com" />
 @endsection
 
 @section('header')

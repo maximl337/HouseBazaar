@@ -48,6 +48,16 @@ img {
 	margin-bottom: 0px;
 }
 
+#navbar .dropdown.open {
+	
+	background-color: darken($major-color, 10%);
+}
+
+#navbar .dropdown-menu {
+	
+	background-color: $major-color;
+}
+
 // Home page
 #home-banner {
 	

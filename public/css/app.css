@@ -5858,6 +5858,12 @@ img {
 #navbar {
   margin-bottom: 0px; }
 
+#navbar .dropdown.open {
+  background-color: #217dbb; }
+
+#navbar .dropdown-menu {
+  background-color: #3498DB; }
+
 #home-banner {
   background: #34495e;
   margin-top: -20px;

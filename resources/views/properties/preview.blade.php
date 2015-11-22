@@ -7,6 +7,7 @@
     <div class="row">
         <div class="col-md-6">
             <h3>Preview</h3>
+            <p class="small">Preview and publish the property for others to find and see it</p>
         </div>
         <div class="col-md-6">
             
@@ -17,7 +18,7 @@
                     <input type="hidden" name="_method" value="post">
 
                     {!! csrf_field() !!}
-                    <button type="submit" class="btn btn-primary">Publish</button>
+                    <button type="submit" class="btn btn-success">Publish</button>
                 </form>
                 
                 
@@ -28,50 +29,66 @@
     <div class="row">
         <div class="col-md-4">
 
-            <h1>{{ $property->street }}</h1>
-            <h2>{!! "$" . number_format($property->price) !!}</h2>
+            <div class="row">
+                
+            
+                <h1>{{ $property->street }}</h1>
+                <h2>{!! "$" . number_format($property->price) !!}</h2>
+
+            </div> <!-- .row -->
 
             <hr />
-
-            <div class="details">
-
-                <div class="description">{!! nl2br($property->description) !!}</div>
+            
+            <div class="row">
                 
-                <table class="table table-bordered">
-                    <tr>
-                        <td>Bedrooms</td>
-                        <td>{{ $property->bedrooms == 0 ? "Bachelor/Studio" : $property->bedrooms }}</td>
-                    </tr>
-                    <tr>
-                        <td>Bathrooms</td>
-                        <td>{{ $property->bathrooms }}</td>
-                    </tr>
-                    <tr>
-                        <td>Size (sqft)</td>
-                        <td>{{ $property->size_square_feet ?: "-" }}</td>
-                    </tr>
-                    <tr>
-                        <td>Furnished</td>
-                        <td>{{ $property->furnished ? "Yes" : "No" }}</td>
-                    </tr>
-                    <tr>
-                        <td>Pets allowed</td>
-                        <td>{{ $property->pets ? "Yes" : "No" }}</td>
-                    </tr>
-                    <tr>
-                        <td>Type</td>
-                        <td>{{ ucfirst($property->property_type) }}</td>
-                    </tr>
-                    <tr>
-                        <td>For</td>
-                        <td>{{ $property->transaction_type }}</td>
-                    </tr>
-                    <tr>
-                        <td>Seller type</td>
-                        <td>{{ ucfirst($property->seller_type) }}</td>
-                    </tr>
-                </table>
-            </div>  
+            
+                <div class="details">
+                    
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>Bedrooms</td>
+                            <td>{{ $property->bedrooms == 0 ? "Bachelor/Studio" : $property->bedrooms }}</td>
+                        </tr>
+                        <tr>
+                            <td>Bathrooms</td>
+                            <td>{{ $property->bathrooms }}</td>
+                        </tr>
+                        <tr>
+                            <td>Size (sqft)</td>
+                            <td>{{ $property->size_square_feet ?: "-" }}</td>
+                        </tr>
+                        <tr>
+                            <td>Furnished</td>
+                            <td>{{ $property->furnished ? "Yes" : "No" }}</td>
+                        </tr>
+                        <tr>
+                            <td>Pets allowed</td>
+                            <td>{{ $property->pets ? "Yes" : "No" }}</td>
+                        </tr>
+                        <tr>
+                            <td>Type</td>
+                            <td>{{ ucfirst($property->property_type) }}</td>
+                        </tr>
+                        <tr>
+                            <td>For</td>
+                            <td>{{ $property->transaction_type }}</td>
+                        </tr>
+                        <tr>
+                            <td>Seller type</td>
+                            <td>{{ ucfirst($property->seller_type) }}</td>
+                        </tr>
+                    </table>
+
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#description-collapse" aria-expanded="false" aria-controls="collapseExample">
+                         View description
+                    </button>
+
+                    <div id="description-collapse" class="description collapse well">
+                        <p>{!! nl2br($property->description) !!}</p>
+                    </div>
+                </div>  
+
+            </div> <!-- .row -->
             
             <hr />
         </div> <!-- .col -->

@@ -8,7 +8,7 @@
         
         <div class="col-md-10 col-md-offset-1">
 
-            <h1 class="page-title">Selling a property?</h1>
+            <h1 class="page-title">Add property</h1>
 
             <hr />
           

@@ -1,4 +1,5 @@
 <?php
+
 if (App::environment('staging') || App::environment('production')) {
 
     Log::useFiles('php://stderr');
@@ -9,6 +10,8 @@ Route::get('/', 'PropertyController@index');
 Route::get('/home', 'PropertyController@index');
 
 Route::get('/browse', 'PropertyController@browse');
+
+Route::get('/about', 'PagesController@about');
 
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 

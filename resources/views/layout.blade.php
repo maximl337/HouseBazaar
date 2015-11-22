@@ -45,7 +45,8 @@
         <div id="navbar-dropdown" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a title="Home" href="/">Home</a></li>
-            <li class="text-primary"><a title="Add a property" href="/properties/create">Add property</a></li>
+            <li><a title="Add a property" href="/properties/create">Add property</a></li>
+            <li><a title="About Home me now" href="/about">About</a></li>
           </ul>
 
           @if(Auth::check())

@@ -2,7 +2,7 @@
 
 @section('header-meta')
     <title>{{ $property->street . ', ' . $property->city . ', ' . $property->state . ', ' . $property->country }} | House me now | Buy and sell properties</title>
-    <meta name="decription" content="{{ $property->street . ', ' . $property->city . ', ' . $property->state . ', ' . $property->country . '|' . $property->description }} | Buy and sell properties" />
+    <meta name="description" content="{{ $property->street . ', ' . $property->city . ', ' . $property->state . ', ' . $property->country . '|' . $property->description }} | Buy and sell properties" />
     <meta name="keywords" content="{{ $property->street . ', ' . $property->city }}, buy sell property, rent, house, home, rental, bedrooms, bathrooms">
     <meta property="og:url"                content="{{ url() . $property->path() }}" />
     <meta property="og:type"               content="place" />

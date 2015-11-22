@@ -26,12 +26,15 @@
                 
 
             </div> <!-- .col -->
+        </div>
 
+        <div class="row">
+            
         	<div class="col-md-10">
         		
         		@foreach($properties as $property)
                     
-                    <div class="row">
+                    <div class="row hidden-sm hidden-xs">
                         <div class="col-md-2 thumbnail">
                             <a href="{{ $property->path() }}">
                                 <img src="{{ $property->photos->first()['thumbnail_path'] }}">
@@ -51,6 +54,26 @@
                         </div> <!-- .col -->
                     </div> <!-- .row -->
 
+                    <div class="row visible-xs visible-sm">
+                        
+                        <div class="col-md-12">
+
+                            <a href="{{ $property->path() }}">
+                                <img src="{{ $property->photos->first()['path'] }}">
+                            </a>
+
+                            <h2>{{ $property->street }}</h2>
+                            <p>{{ str_limit($property->description, 25) }}</p>
+                            <span class="label label-default">Bedrooms: {{ $property->bedrooms == 0.0 ? "Bachelor / Studio" : $property->bedrooms }}</span>
+                            <span class="label label-default">Bathrooms: {{ $property->bathrooms ?: "Not given" }}</span>
+                            <span class="label label-default">Size (sqft): {{ $property->size_square_feet == 0.00 ? "Not given" : $property->size_square_feet }}</span>
+
+
+                            
+                        </div> <!-- .col -->
+                        
+                    </div> <!-- .row -->
+                    <hr />
                 @endforeach        
         		
         	</div> <!-- .col -->

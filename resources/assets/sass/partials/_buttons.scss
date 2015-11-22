@@ -5,10 +5,16 @@
 
 .btn-primary {
 	
-	background-color: $primary-color !important;
+	background-color: $major-color !important;
+	border: 1px solid $major-color;
 }
 
 .btn {
 	
 	border-radius: 3px !important;
+}
+
+.btn-primary:hover {
+	
+	background-color: darken($major-color, 10%) !important;
 }

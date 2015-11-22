@@ -5757,19 +5757,83 @@ button.close {
   height: 39px; }
 
 #navbar {
-  background: #ffffff; }
+  background-color: #3498DB; }
 
 #navbar a {
-  color: #34495e; }
+  color: white; }
 
 #navbar a:hover {
   color: #222f3d; }
 
 .btn-primary {
-  background-color: #34495e !important; }
+  background-color: #3498DB !important;
+  border: 1px solid #3498DB; }
 
 .btn {
   border-radius: 3px !important; }
+
+.btn-primary:hover {
+  background-color: #217dbb !important; }
+
+.btn-twitter {
+  background: #00acee;
+  border-radius: 0;
+  color: #fff; }
+
+.btn-twitter:link, .btn-twitter:visited {
+  color: #fff; }
+
+.btn-twitter:active, .btn-twitter:hover {
+  background: #0087bd;
+  color: #fff; }
+
+.btn-facebook {
+  background: #3b5998;
+  border-radius: 0;
+  color: #fff; }
+
+.btn-facebook:link, .btn-facebook:visited {
+  color: #fff; }
+
+.btn-facebook:active, .btn-facebook:hover {
+  background: #30477a;
+  color: #fff; }
+
+.btn-googleplus {
+  background: #e93f2e;
+  border-radius: 0;
+  color: #fff; }
+
+.btn-googleplus:link, .btn-googleplus:visited {
+  color: #fff; }
+
+.btn-googleplus:active, .btn-googleplus:hover {
+  background: #ba3225;
+  color: #fff; }
+
+.btn-stumbleupon {
+  background: #f74425;
+  border-radius: 0;
+  color: #fff; }
+
+.btn-stumbleupon:link, .btn-stumbleupon:visited {
+  color: #fff; }
+
+.btn-stumbleupon:active, .btn-stumbleupon:hover {
+  background: #c7371e;
+  color: #fff; }
+
+.btn-linkedin {
+  background: #0e76a8;
+  border-radius: 0;
+  color: #fff; }
+
+.btn-linkedin:link, .btn-linkedin:visited {
+  color: #fff; }
+
+.btn-linkedin:active, .btn-linkedin:hover {
+  background: #0b6087;
+  color: #fff; }
 
 html {
   min-height: 100%; }
@@ -5790,5 +5854,17 @@ img {
 
 .row {
   margin-bottom: 1em; }
+
+#navbar {
+  margin-bottom: 0px; }
+
+#home-banner {
+  background: #34495e;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  padding: 50px; }
+
+#home-banner .page-title {
+  color: white; }
 
 /*# sourceMappingURL=app.css.map */

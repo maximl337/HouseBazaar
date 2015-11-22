@@ -41,16 +41,16 @@
     
     <section>
         
-        <div class="container-fluid">
+        <div class="container-fluid" id="home-banner">
             
             <div class="row">
                 
-                <div class="col-md-12">
-                    <h1 class="page-title text-center">
+                <div class="col-md-12 text-center">
+                    <h1 class="page-title">
                         <span>House me now</span>    is a place to buy, sell, rent properties.
                     </h1>
                     
-
+                    <a href="/properties/create" class="btn btn-primary btn-lg">Add property</a>
                 </div>
             </div>
 
@@ -97,7 +97,9 @@
                                     <div class="property-wrap" style="">
 
                                         <div class="image-wrap" style="">
-                                            <img style="" src="{{ $property->photos->first()['path'] }}">
+                                            <a href="{{ $property->path() }}">
+                                                <img style="" src="{{ $property->photos->first()['path'] }}">
+                                            </a>
                                         </div>
 
                                         <div class="info-wrap">

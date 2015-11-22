@@ -11,6 +11,8 @@
 
 @import "partials/buttons";
 
+@import "partials/social";
+
 html {
 	
 	min-height: 100%;
@@ -39,4 +41,24 @@ img {
 .row {
 	
 	margin-bottom: 1em;
+}
+
+#navbar {
+	
+	margin-bottom: 0px;
+}
+
+// Home page
+#home-banner {
+	
+	background: $primary-color;
+	margin-top: -20px;
+	margin-bottom: 20px;
+
+	padding: 50px;
+}
+
+#home-banner .page-title {
+	
+	color: white;
 }

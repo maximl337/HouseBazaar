@@ -4,7 +4,7 @@
 
 @section('header-meta')
     <title> House me now | Buy and sell properties with beautiful property pages</title>
-    <meta name="description" content="House me now is an online portal to Buy and sell properties quickly with beautiful property pages. Buy, sell and rent." />
+    <meta name="description" content="Home me now is an online portal to Buy and sell properties quickly with beautiful property pages. Buy, sell and rent." />
     <meta name="keywords" content="buy sell property, rent, house, home, rental, bedrooms, bathrooms">
 @endsection
 
@@ -55,7 +55,7 @@
                 
                 <div class="col-md-12 text-center">
                     <h1 class="page-title">
-                        <span>House me now</span> is a place to buy, sell, rent properties.
+                        <span>Home me now</span> is a place to buy, sell, rent properties.
                     </h1>
                     
                     <a title="Add property" href="/properties/create" class="btn btn-primary btn-lg">Add property</a>

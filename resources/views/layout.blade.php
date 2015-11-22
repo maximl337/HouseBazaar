@@ -40,7 +40,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a title="House me now" class="navbar-brand" href="/">House Me Now!</a>
+          <a title="House me now" class="navbar-brand" href="/">Home Me Now!</a>
         </div>
         <div id="navbar-dropdown" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">

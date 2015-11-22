@@ -2,7 +2,14 @@
 
 @extends('layout')
 
+@section('header-meta')
+    <title> House me now | Buy and sell properties with beautiful property pages</title>
+    <meta name="decription" content="House me now is an online portal to Buy and sell properties quickly with beautiful property pages." />
+    <meta name="keywords" content="buy sell property, rent, house, home, rental, bedrooms, bathrooms">
+@endsection
+
 @section('header')
+
 <style type="text/css">
         .properties .property-wrap {
 
@@ -95,18 +102,18 @@
                             @foreach($propertyRow as $property)
                                 <div class="col-md-4">
 
-                                    <div class="property-wrap" style="">
+                                    <div itemscope itemtype="http://schema.org/Product" class="property-wrap" style="">
 
                                         <div class="image-wrap" style="">
                                             <a title="Go to property" href="{{ $property->path() }}">
-                                                <img alt="House picture" src="{{ $property->photos->first()['path'] }}">
+                                                <img itemprop="image" alt="House picture" src="{{ $property->photos->first()['path'] }}">
                                             </a>
                                         </div>
 
                                         <div class="info-wrap">
-                                            <p class="price">{{ "$" . number_format($property->price) }}</p>
+                                            <span itemprop="offers" itemscope itemtype="http://schema.org/Offer"><p itemprop="price" class="price">{{ "$" . number_format($property->price) }}</p></span>
                                             <p class="address">{{ $property->street . ", " . $property->city }}</p>
-                                            <p class="photos"><a title="Go to property" href="{{ $property->path() }}">{{ $property->photos->count() }} photos</a></p>
+                                            <p class="photos"><a itemprop="url" title="Go to property" href="{{ $property->path() }}">{{ $property->photos->count() }} photos</a></p>
                                         </div>
                                         
                                     </div>
@@ -122,7 +129,7 @@
 
                 <div class="col-md-10 col-md-offset-1 text-center">
                         
-                        <a title="Show more properties" class="btn btn-primary" href="/browse">Show more</a>
+                        <a title="Show more properties" class="btn btn-primary btn-lg" href="/browse">Show more</a>
 
                 </div>
             

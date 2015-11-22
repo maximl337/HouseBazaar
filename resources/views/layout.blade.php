@@ -2,9 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>House Bazaar</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    
     @yield('header-meta')
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-language" content="en">
 
     <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/dropzone.css">

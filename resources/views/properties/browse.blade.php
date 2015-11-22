@@ -2,6 +2,12 @@
 
 @extends('layout')
 
+@section('header-meta')
+    <title> Browse properties | House me now | Buy and sell properties with beautiful property pages</title>
+    <meta name="decription" content="House me now is an online portal to Buy and sell properties quickly with beautiful property pages." />
+    <meta name="keywords" content="buy sell property, rent, house, home, rental, bedrooms, bathrooms">
+@endsection
+
 @section('content')
 
     <div class="container">
@@ -36,8 +42,8 @@
                     
                     <div class="row hidden-sm hidden-xs">
                         <div class="col-md-2 thumbnail">
-                            <a href="{{ $property->path() }}">
-                                <img src="{{ $property->photos->first()['thumbnail_path'] }}">
+                            <a title="Click to view property" href="{{ $property->path() }}">
+                                <img alt="Property image" title="click to view property" src="{{ $property->photos->first()['thumbnail_path'] }}">
                             </a>
                         </div> <!-- .col -->
 
@@ -58,7 +64,7 @@
                         
                         <div class="col-md-12">
 
-                            <a href="{{ $property->path() }}">
+                            <a title="Click to view property" href="{{ $property->path() }}">
                                 <img src="{{ $property->photos->first()['path'] }}">
                             </a>
 

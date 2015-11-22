@@ -5873,4 +5873,23 @@ img {
 #home-banner .page-title {
   color: white; }
 
+html {
+  position: relative;
+  min-height: 100%; }
+
+body {
+  margin: 0 0 120px;
+  /* bottom = footer height */ }
+
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 120px;
+  width: 100%;
+  padding: 10px; }
+
+footer ul li {
+  list-style-type: none; }
+
 /*# sourceMappingURL=app.css.map */

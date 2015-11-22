@@ -88,5 +88,33 @@
 
     @include('flash')
 
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                  <ul>
+                    <li><a title="Home" href="/">Home</a></li>
+                    <li><a title="About" href="/about">About</a></li>
+                    <li><a title="Browse" href="/browse">Browse</a></li>
+                  </ul>
+                </div>
+                <div class="col-md-4">
+                  <ul>
+                    <li><a title="Facebook" href="#">Facebook</a></li>
+                    <li><a title="Twitter" href="#">Twitter</a></li>
+                    <li><a title="Google plus" href="#">Google+</a></li>
+                  </ul>
+                </div>
+                <div class="col-md-4">
+                  <ul>
+                    <li><a title="Create a property" href="/properties/create">Add property</a></li>
+                    <li><a title="Join now" href="/auth/register">Join</a></li>
+                    <li><a title="Login" href="/auth/login">Sign in</a></li>
+                  </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>

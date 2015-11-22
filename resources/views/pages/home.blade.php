@@ -2,9 +2,8 @@
 
 @extends('layout')
 
-@section('content')
-
-    <style type="text/css">
+@section('header')
+<style type="text/css">
         .properties .property-wrap {
 
             overflow: hidden; 
@@ -37,7 +36,9 @@
             color: #1abc9c;
         }
     </style>
+@endsection
 
+@section('content')
     
     <section>
         
@@ -47,10 +48,10 @@
                 
                 <div class="col-md-12 text-center">
                     <h1 class="page-title">
-                        <span>House me now</span>    is a place to buy, sell, rent properties.
+                        <span>House me now</span> is a place to buy, sell, rent properties.
                     </h1>
                     
-                    <a href="/properties/create" class="btn btn-primary btn-lg">Add property</a>
+                    <a title="Add property" href="/properties/create" class="btn btn-primary btn-lg">Add property</a>
                 </div>
             </div>
 
@@ -72,7 +73,7 @@
                             <ul class="dropdown-menu">
 
                                 @foreach($countries::all() as $country => $code)
-                                    <li><a href="?country={{ $code }}">{{ $country }}</a></li>
+                                    <li><a title="{{ $country }}" href="?country={{ $code }}">{{ $country }}</a></li>
                                 @endforeach
                                 
                             </ul>
@@ -97,15 +98,15 @@
                                     <div class="property-wrap" style="">
 
                                         <div class="image-wrap" style="">
-                                            <a href="{{ $property->path() }}">
-                                                <img style="" src="{{ $property->photos->first()['path'] }}">
+                                            <a title="Go to property" href="{{ $property->path() }}">
+                                                <img alt="House picture" src="{{ $property->photos->first()['path'] }}">
                                             </a>
                                         </div>
 
                                         <div class="info-wrap">
                                             <p class="price">{{ "$" . number_format($property->price) }}</p>
                                             <p class="address">{{ $property->street . ", " . $property->city }}</p>
-                                            <p class="photos"><a href="{{ $property->path() }}">{{ $property->photos->count() }} photos</a></p>
+                                            <p class="photos"><a title="Go to property" href="{{ $property->path() }}">{{ $property->photos->count() }} photos</a></p>
                                         </div>
                                         
                                     </div>
@@ -121,7 +122,7 @@
 
                 <div class="col-md-10 col-md-offset-1 text-center">
                         
-                        <a class="btn btn-primary" href="/browse">Show more</a>
+                        <a title="Show more properties" class="btn btn-primary" href="/browse">Show more</a>
 
                 </div>
             

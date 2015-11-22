@@ -29,24 +29,24 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">House Me Now!</a>
+          <a title="House me now" class="navbar-brand" href="/">House Me Now!</a>
         </div>
         <div id="navbar-dropdown" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="/">HOME</a></li>
-            <li class="text-primary"><a href="/properties/create">ADD PROPERTY</a></li>
+            <li><a title="Home" href="/">Home</a></li>
+            <li class="text-primary"><a title="Add a property" href="/properties/create">Add property</a></li>
           </ul>
 
           @if(Auth::check())
             <ul class="nav navbar-nav navbar-right">
               
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, {{ Auth::user()->name }} <span class="caret"></span></a>
+                <a title="Show more" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, {{ Auth::user()->name }} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="/account/settings">Account Settings</a></li>
-                  <li><a href="/user/properties">My Properties</a></li>
+                  <li><a title="Account settings" href="/account/settings">Account Settings</a></li>
+                  <li><a title="My properties" href="/user/properties">My Properties</a></li>
                   <li role="separator" class="divider"></li>
-                  <li><a href="/auth/logout">Logout</a></li>
+                  <li><a title="Logout" href="/auth/logout">Logout</a></li>
                 </ul>
               </li>
             </ul>
@@ -54,7 +54,7 @@
           @else
             <ul class="nav navbar-nav navbar-right">
               
-              <li><a class="" href="/auth/login">SIGN IN</a></li>
+              <li><a title="Sign in" href="/auth/login">Sign in</a></li>
             </ul>
           @endif
           

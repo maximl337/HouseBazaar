@@ -3,7 +3,7 @@
 @extends('layout')
 
 @section('header-meta')
-    <title> House me now | Buy and sell properties with beautiful property pages</title>
+    <title> Home me now | Buy and sell properties with beautiful property pages</title>
     <meta name="description" content="Home me now is an online portal to Buy and sell properties quickly with beautiful property pages. Buy, sell and rent." />
     <meta name="keywords" content="buy sell property, rent, house, home, rental, bedrooms, bathrooms">
 @endsection

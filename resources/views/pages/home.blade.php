@@ -112,7 +112,7 @@
 
                                         <div class="info-wrap">
                                             <span itemprop="offers" itemscope itemtype="http://schema.org/Offer"><p itemprop="price" class="price">{{ "$" . number_format($property->price) }}</p></span>
-                                            <p class="address">{{ $property->street . ", " . $property->city }}</p>
+                                            <p itemprop="name" class="address">{{ $property->street . ", " . $property->city }}</p>
                                             <p class="photos"><a itemprop="url" title="Go to property" href="{{ $property->path() }}">{{ $property->photos->count() }} photos</a></p>
                                         </div>
                                         
